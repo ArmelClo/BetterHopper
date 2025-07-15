@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "betterhopper",
+    "name": "BetterHopper",
+    "authors": [
+        "Zolkenn"
+    ],
+    "description": "Add a better hopper to the game, which can pull items two block over it.",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": "1.20.12"
+    }
+}

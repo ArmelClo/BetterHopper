@@ -1,0 +1,33 @@
+{
+	code: "better-hopper",
+	class: "betterhopper.BetterHopper",
+	behaviors: [{name: "Lockable" }, {name: "Container"}],
+	entityclass: "ItemFlow",
+	attributes: {
+		"pullFaces": [],
+		"acceptFromFaces": ["up"],
+		"pushFaces": ["down"]
+	},
+	creativeinventory: { "general": ["*"], "mechanics": ["*"] },
+	blockmaterial: "Metal",
+	lightAbsorption: 0,
+	shape: { base: "game:block/metal/hopperh" },
+	textures: 	
+	{
+		all: { base: "game:block/metal/sheet/soldered-copper" },
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	resistance: 1.75,
+	sounds: {
+		"place": "game:block/chute",
+		"break": "game:block/chute",
+		"hit": "game:block/chute",
+		"walk": "game:walk/stone"
+	}
+	
+}

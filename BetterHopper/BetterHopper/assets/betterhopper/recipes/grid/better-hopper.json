@@ -1,0 +1,19 @@
+{
+	"ingredientPattern": "M,H",
+	"width": 1,
+	"height": 2,
+	"ingredients": {
+		"M": {
+			"type": "item",
+			"code": "game:nugget-magnetite"
+		},
+		"H": {
+			"type": "block",
+			"code": "game:hopper"
+		}
+	},
+	"output": {
+		"type": "block",
+		"code": "betterhopper:better-hopper"
+	}
+}
