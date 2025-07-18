@@ -2,7 +2,10 @@
 	code: "better-hopper",
 	class: "betterhopper.BetterHopper",
 	behaviors: [{name: "Lockable" }, {name: "Container"}],
-	entityclass: "betterhopper.BetterHopperEntity",
+	entityclass: "ItemFlow",
+	"entityBehaviors": [
+		{ "name": "betterhopper.BetterHopperBehavior" },
+	],
 	attributes: {
 		"pullFaces": [],
 		"acceptFromFaces": ["up"],

@@ -1,18 +1,25 @@
-using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-using Vintagestory.GameContent;
 
 namespace BetterHopper;
 
-public class BetterHopperBlockEntity: BlockEntityItemFlow 
+public class BetterHopperBlockEntityBehavior: BlockEntityBehavior
 {
-    public override void Initialize(ICoreAPI api)
+
+    private long id;
+    public BetterHopperBlockEntityBehavior(BlockEntity blockentity) : base(blockentity)
     {
-        base.Initialize(api);
-        RegisterGameTickListener((delta) =>
+    }
+
+    public override void Initialize(ICoreAPI api, JsonObject json)
+    {
+        if (api is ICoreServerAPI sapi)
+        {
+            id = sapi.Event.RegisterGameTickListener((delta) =>
             {
                 IWorldAccessor world = api.World;
                 //align the position to the center of the block
@@ -20,9 +27,19 @@ public class BetterHopperBlockEntity: BlockEntityItemFlow
                 Entity[] items = world.GetEntitiesAround(pos, 0.6f, 1.0f, entity => entity is EntityItem);
                 foreach (Entity item in items)
                 {
+                    sapi.Logger.Debug($"Armel: {item}");
                     BetterHopperBlock hopper = world.BlockAccessor.GetBlock(Pos) as BetterHopperBlock;
                     hopper!.OnEntityCollide(world, item, Pos, BlockFacing.UP, Vec3d.Zero, false);
                 }
             }, 100);
+        }
+        
+        base.Initialize(api, json);
+    }
+
+    public override void OnBlockRemoved()
+    {
+        Blockentity.UnregisterGameTickListener(id);
+        base.OnBlockRemoved();
     }
 }
