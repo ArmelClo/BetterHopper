@@ -11,6 +11,18 @@
       "executablePath": "dotnet",
       "commandLineArgs": "\"$(VINTAGE_STORY)/VintagestoryServer.dll\" --tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
       "workingDirectory": "$(VINTAGE_STORY)"
+    },
+    "Client-nix": {
+      "commandName": "Executable",
+      "executablePath": "vintagestory",
+      "commandLineArgs": "--tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
+      "workingDirectory": "$(VINTAGE_STORY)"
+    },
+    "Server-nix": {
+      "commandName": "Executable",
+      "executablePath": "vintagestory",
+      "commandLineArgs": "--tracelog --addModPath \"$(ProjectDir)/bin/$(Configuration)/Mods\"",
+      "workingDirectory": "$(VINTAGE_STORY)"
     }
   }
 }
